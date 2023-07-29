@@ -1,0 +1,10 @@
+dh_gripper_controller:
+  type: position_controllers/JointTrajectoryController
+  joints:
+    - gripper_finger1_joint
+  gains:
+    gripper_finger1_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1

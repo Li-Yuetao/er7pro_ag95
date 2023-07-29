@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<robot name="er7pro_ag95" xmlns:xacro="http://ros.org/wiki/xacro">
+
+    <!-- 夹爪与机械臂末端偏角 22.5 degree 转弧度为 0.392699082 -->
+    <xacro:arg name="deflection_angle" default="0.392699082" />
+
+   <!-- 加载xMatePro7模型 -->
+    <xacro:include filename="$(find rokae_description)/urdf/xMatePro7.xacro" />
+    <!-- gripper模型 -->
+    <xacro:include filename="$(find dh_ag95_description)/urdf/dh_robotics_ag95_gripper.urdf.xacro"/>
+
+    <!-- 添加末端dummy_gripper 手爪末端 虚拟关节 -->
+    <link name="dummy_gripper"/>
+    <joint name="dummy_joint" type="fixed">
+        <origin
+            xyz="0 0 0.185"
+            rpy="0 0 0" />
+        <parent
+            link="gripper_base_link" />
+        <child
+            link="dummy_gripper" />
+    </joint>
+
+    <!-- gripper -> xMatePro7 -->
+    <xacro:dh_robotics_ag95_gripper prefix="" parent="xMatePro7_link7" >
+        <origin xyz="0 0 0" rpy="0 0 ${-pi/2 + 0.392699082}"/>
+    </xacro:dh_robotics_ag95_gripper>
+
+</robot>

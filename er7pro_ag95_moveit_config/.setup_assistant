@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: er7pro_ag95_description
+    relative_path: urdf/er7pro_ag95.urdf.xacro
+    xacro_args: ""
+  SRDF:
+    relative_path: config/er7pro_ag95.srdf
+  CONFIG:
+    author_name: lyt
+    author_email: liyuetaochn@163.com
+    generated_timestamp: 1690612926

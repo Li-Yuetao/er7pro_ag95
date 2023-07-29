@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+
+<launch>
+    <include file="$(find er7pro_ag95_description)/launch/view_composite_robot_upload.launch"/>
+    <!-- add for conbined-robot standalone rviz show -->
+    <node pkg="tf" type="static_transform_publisher" name="link_name" args="0 0 0 0 0 0 map world 100" />
+    <!-- Starting Joint state publisher node which will publish the joint values -->
+    <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" />
+
+    <!-- Starting robot state publish which will publish tf -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+    <!-- Launch visualization in rviz -->
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find er7pro_ag95_description)/urdf.rviz" required="true" />
+</launch>

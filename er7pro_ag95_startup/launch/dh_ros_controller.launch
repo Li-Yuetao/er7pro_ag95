@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<launch>
+
+    <node pkg="dh_ros_controller" name="dh_ros_controller_node" type="dh_ros_controller_node" output="screen">
+
+    </node>
+
+</launch>
